@@ -1,18 +1,24 @@
 <template>
-  <div class='list-wrapper'>
-    <h1>{{ title }}</h1>
-    <ul v-for='item in list' v-bind:key='item.newsId'>
-      <li v-on:click="toDetail(item)">
-        <h3>{{ item.title }}</h3>
-        <img :src='item.pic'/>
-      </li>
-    </ul>
+  <div class='news-list'>
+    <Header :headTitle='headTitle'/>
+    <div class='list-wrapper'>
+        <h1>{{ title }}</h1>
+        <ul v-for='item in list' v-bind:key='item.newsId'>
+          <li v-on:click="toDetail(item)">
+            <h3>{{ item.title }}</h3>
+            <img :src='item.pic'/>
+          </li>
+        </ul>
+    </div>
+    <Footer :showFooter='showFooter'/>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import VueResource from 'vue-resource'
+import Header from './Header'
+import Footer from './Footer'
 
 Vue.use(VueResource)
 
@@ -20,6 +26,8 @@ export default {
   name: 'NewsList',
   data () {
     return {
+      headTitle: 'News Room',
+      showFooter: true,
       title: 'This is News List',
       list: []
     }
@@ -37,6 +45,7 @@ export default {
       }
     )
   },
+  components: { Header, Footer },
   methods: {
     toDetail: function (item) {
       this.$router.push({ name: 'Detail', params: { newsItem: item, newsId: item.newsId } })
