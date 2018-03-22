@@ -9,7 +9,7 @@
           </li>
         </ul>
     </div>
-    <Footer :showFooter='showFooter'/>
+    <Footer :showFooter='showFooter' :currentPage='currentPage'/>
   </div>
 </template>
 
@@ -27,6 +27,7 @@ export default {
     return {
       headTitle: 'News Room',
       showFooter: true,
+      currentPage: 'list',
       list: []
     }
   },

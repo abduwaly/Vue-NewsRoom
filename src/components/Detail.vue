@@ -27,7 +27,7 @@ export default {
   data () {
     return {
       news: { title: '404' },
-      showFooter: true
+      showFooter: false
     }
   },
   created () {
