@@ -98,3 +98,6 @@ input, button{
     border-radius: 5px;
     font-size: 18px;
 }
+.content-wrapper{
+    margin: 50px 0;
+}

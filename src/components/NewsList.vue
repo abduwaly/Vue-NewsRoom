@@ -1,8 +1,7 @@
 <template>
   <div class='news-list'>
     <Header :headTitle='headTitle'/>
-    <div class='list-wrapper'>
-        <h1>{{ title }}</h1>
+    <div class='content-wrapper'>
         <ul v-for='item in list' v-bind:key='item.newsId'>
           <li v-on:click="toDetail(item)">
             <h3>{{ item.title }}</h3>
@@ -28,7 +27,6 @@ export default {
     return {
       headTitle: 'News Room',
       showFooter: true,
-      title: 'This is News List',
       list: []
     }
   },

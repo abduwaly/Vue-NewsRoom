@@ -1,11 +1,15 @@
 <template>
-  <div class='news'>
-    <h1>{{ news.title }}</h1>
-    <p>{{ news.briefContent }}</p>
-    <img :src='news.pic'/>
-    <p v-html='news.content'></p>
-    <hr>
-    <NewsComments :newsId='news.newsId'/>
+  <div class='news-detail'>
+      <Header :headTitle='news.title'/>
+        <div class='content-wrapper'>
+            <h1>{{ news.title }}</h1>
+            <p>{{ news.briefContent }}</p>
+            <img :src='news.pic'/>
+            <p v-html='news.content'></p>
+            <hr>
+            <NewsComments :newsId='news.newsId'/>
+        </div>
+      <Footer :showFooter='showFooter'/>
   </div>
 </template>
 
@@ -13,6 +17,8 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import NewsComments from '@/components/NewsComments'
+import Header from './Header'
+import Footer from './Footer'
 
 Vue.use(VueResource)
 
@@ -20,8 +26,8 @@ export default {
   name: 'NewsList',
   data () {
     return {
-      msg: 'this is news detail',
-      news: {}
+      news: { title: '404' },
+      showFooter: true
     }
   },
   created () {
@@ -30,19 +36,14 @@ export default {
     if (item) {
       this.news = this.$route.params.newsItem
     } else {
-      this.news = { title: 'Oops! 404' }
+      this.news = { title: '404' }
     }
   },
-  components: { NewsComments }
+  components: { NewsComments, Header, Footer }
 }
 </script>
 
 <style scoped>
-.news{
-  width: 300px;
-  margin: 10px auto;
-  border: solid 1px gray;
-}
 img{
   max-width: 100%;
 }
