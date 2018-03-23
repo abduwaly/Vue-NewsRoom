@@ -4,7 +4,7 @@ import Login from '@/components/Login'
 import NewsList from '@/components/NewsList'
 import Fail from '@/components/Fail'
 import Detail from '@/components/Detail'
-import Settings from '@/components/Settings'
+import Assistant from '@/components/Assistant'
 import Me from '@/components/Me'
 
 Vue.use(Router)
@@ -32,9 +32,9 @@ export default new Router({
       component: Detail
     },
     {
-      path: '/settings',
-      name: 'Settings',
-      component: Settings
+      path: '/assistant',
+      name: 'Assistant',
+      component: Assistant
     },
     {
       path: '/me',

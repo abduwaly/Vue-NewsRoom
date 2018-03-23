@@ -20,9 +20,9 @@ export default {
   top: 0;
   z-index:10;
   width: 100%;
-  height: 45px;
-  background: #6c6;
-  line-height: 45px;
+  height: 52px;
+  background: #f64;
+  line-height: 52px;
   font-size: 18px;
   color: white;
   text-overflow: ellipsis;

@@ -1,5 +1,5 @@
 <template>
-  <div class='settings'>
+  <div class='assistant'>
       <Header :headTitle='headTitle'/>
       <Footer :showFooter='showFooter' :currentPage='currentPage'/>
   </div>
@@ -11,12 +11,12 @@ import Header from './Header'
 import Footer from './Footer'
 
 export default {
-  name: 'Settings',
+  name: 'Assistant',
   data () {
     return {
-      headTitle: 'Settings',
+      headTitle: 'Assistant Home',
       showFooter: true,
-      currentPage: 'settings'
+      currentPage: 'assistant'
     }
   },
   components: { Header, Footer }

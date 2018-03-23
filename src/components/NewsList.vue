@@ -4,8 +4,13 @@
     <div class='content-wrapper'>
         <ul v-for='item in list' v-bind:key='item.newsId'>
           <li v-on:click="toDetail(item)">
-            <h3>{{ item.title }}</h3>
-            <img :src='item.pic'/>
+            <div class='left item-pic'>
+              <img :src="item.pic">
+            </div>
+            <div class="right item-info">
+              <h3>{{ item.title }}</h3>
+              <div class='brief-content'>{{ item.briefContent }}</div>
+            </div>
           </li>
         </ul>
     </div>
@@ -34,7 +39,7 @@ export default {
   created () {
     console.log('get data')
     const _this = this
-    const url = 'https://uat.redgltc.com:8443/staff/news/queryList?type=news&userId=test'
+    const url = 'https://uat.redgltc.com:8443/staff/news/queryList?type=news&userId=test&pager.pageNo=2&pager.pageSize=10'
     Vue.http.get(url).then(
       function (s) {
         console.log(s, s.body.data.news)
@@ -54,28 +59,47 @@ export default {
 </script>
 
 <style scoped>
-.list-wrapper{
-  width: 300px;
-  margin: 10px auto;
-  border: 1px solid gray;
-}
 ul{
   padding: 0;
 }
 ul li{
   list-style-type:none;
-}
-li{
-  border:1px solid gray;
+  height: 120px;
+  background: white;
+  padding: 10px;
+  margin: 7px;
+  box-shadow: 0px 0px 6px #ccc;
 }
 li:hover{
   cursor: pointer;
-  background: lightgray;
 }
-h1{
-  color:red;
+.item-pic{
+  width:40%;
+  height:100px;
 }
-img{
-  width:100px;
+.item-pic img{
+  width: 100%;
+  height: 100%;
+}
+.item-info{
+  width: 56%;
+  height: 100px;
+  overflow: hidden;
+}
+.item-info h3{
+  height:22px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.brief-content{
+    height:78px;
+    line-height: 22px;
+    text-align: left;
+    text-indent: 1.5em;
+    font-size: 0.8em;
+    color: gray;
+    margin-top: 10px;
 }
 </style>

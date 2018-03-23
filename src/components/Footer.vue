@@ -7,8 +7,8 @@
         </router-link>
       </section>
       <section class='foot-item'>
-        <router-link to="/settings">
-          <span v-bind:class="{ 'curr': isCurr[1] }">Settings</span>
+        <router-link to="/assistant">
+          <span v-bind:class="{ 'curr': isCurr[1] }">Assistant</span>
         </router-link>
       </section>
       <section class='foot-item'>
@@ -31,7 +31,7 @@ export default {
     }
   },
   created () {
-    const pages = ['list', 'settings', 'me']
+    const pages = ['list', 'assistant', 'me']
     const _this = this
     pages.forEach(function (item, index) {
       if (item === _this.currentPage) {
@@ -52,11 +52,10 @@ export default {
   background-color: #fff;
   line-height: 45px;
   font-size: 12px;
-  color: white;
-  box-shadow: 0 -0.02667rem 0.05333rem rgba(0, 0, 0, 0.1);
 }
 .foot-container{
   display: flex;
+  box-shadow: 0 -0.02667rem 0.05333rem rgba(0, 0, 0, 0.1);
 }
 .foot-item{
   display: flex;
@@ -70,7 +69,7 @@ export default {
   color: darkgrey;
 }
 .foot-item span.curr{
-  color: #6c6;
+  color: #f64;
 }
 a{
   width: 100%;
