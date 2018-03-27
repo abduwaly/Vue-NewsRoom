@@ -16,7 +16,12 @@
           </div>
         </div>
         <SearchContent @getContent='search'/>
-        <div class='show-child-param'>This is what you searched : <strong>{{ searchedItem }}</strong></div>
+        <div class='show-child-param'>[父子传参]This is what you searched : <strong>{{ searchedItem }}</strong></div>
+        <hr>
+        [vuex 状态管理]
+        <ul v-for='(f, index) in fruits' v-bind:key='f.tid'>
+          <li>{{ f.name }}  <span class='del' @click='remove(index)'>X</span></li>
+        </ul>
       </div>
       <Footer :showFooter='showFooter' :currentPage='currentPage'/>
   </div>
@@ -98,6 +103,7 @@ export default {
         slidesPerView: 3.5,
         freeMode: true
       })
+      typesSwiper.init()
     },
     stopPlay () {
       activitiesSwiper.stopAutoplay()
@@ -108,6 +114,15 @@ export default {
     search (item) {
       console.log(item)
       this.searchedItem = item
+    },
+    remove (index) {
+      console.log(index, this.$store.state.fruits)
+      this.$store.commit('removeFruit', index)
+    }
+  },
+  computed: {
+    fruits () {
+      return this.$store.state.fruits
     }
   }
 }
@@ -134,5 +149,8 @@ export default {
 }
 .show-child-param{
   margin-top: 20px;
+}
+.del{
+  border: 1px solid lightgray;
 }
 </style>
