@@ -31,10 +31,7 @@ export default {
       headTitle: 'Login',
       showFooter: false,
       username: '',
-      password: '',
-      linkImg: {
-        errorIcon: require('../assets/error.png')
-      }
+      password: ''
     }
   },
   components: { Header, Footer },
@@ -61,7 +58,7 @@ export default {
       }
     },
     register: function () {
-      console.log('To Register Page ...', MD5.hex('admin'), this.linkImg.errorIcon)
+      console.log('To Register Page ...', MD5.hex('admin'))
     }
   }
 }

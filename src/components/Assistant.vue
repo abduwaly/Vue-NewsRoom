@@ -15,6 +15,8 @@
             </div>
           </div>
         </div>
+        <SearchContent @getContent='search'/>
+        <div class='show-child-param'>This is what you searched : <strong>{{ searchedItem }}</strong></div>
       </div>
       <Footer :showFooter='showFooter' :currentPage='currentPage'/>
   </div>
@@ -24,6 +26,7 @@
 
 import Header from './Header'
 import Footer from './Footer'
+import SearchContent from './SearchContent'
 import Swiper from '../../static/swiper.min.js'
 let activitiesSwiper
 let typesSwiper
@@ -35,6 +38,7 @@ export default {
       headTitle: 'Assistant Home',
       showFooter: true,
       currentPage: 'assistant',
+      searchedItem: '',
       swiperImgs: [
         {
           'pid': '1',
@@ -74,7 +78,7 @@ export default {
   mounted () {
     this.initSwiper()
   },
-  components: { Header, Footer },
+  components: { Header, Footer, SearchContent },
   methods: {
     initSwiper () {
       activitiesSwiper = new Swiper('#activity-swiper', {
@@ -100,6 +104,10 @@ export default {
     },
     play () {
       activitiesSwiper.startAutoplay()
+    },
+    search (item) {
+      console.log(item)
+      this.searchedItem = item
     }
   }
 }
@@ -123,5 +131,8 @@ export default {
 }
 .type-slide{
   border-right: solid 1px #ff664421;
+}
+.show-child-param{
+  margin-top: 20px;
 }
 </style>
